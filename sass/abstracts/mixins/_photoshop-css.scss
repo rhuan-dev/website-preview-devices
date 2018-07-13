@@ -1,0 +1,30 @@
+/*
+  Photoshop does not apply line height to the first row, which CSS does. This creates all kinds of havock.
+  To calculate the correct offset for the first line we need the font-size and the lineheight, i.e:
+
+  @include line-height(22,30);
+
+  in Photoshop points/px (but with no unit)
+
+  Reset rem to 10-based instead of default browser 16
+  html {
+    font-size: 62.5%;
+  }
+*/
+@mixin line-height($fontsize, $lineheight) {
+    line-height: ($lineheight) + px;
+    line-height: ($lineheight/10) + rem;
+    margin-top: (($lineheight - $fontsize)/2 * -1) + px;
+    margin-top: ((($lineheight - $fontsize)/2 * -1) / 10) + rem
+}
+
+/* Letter spacing is simpler.. stolen from somewhere */
+@mixin letter-spacing($letterspacing) {
+    letter-spacing: $letterspacing/1000;
+}
+
+/* font-size to rem with backup, stolen from somewhere */
+@mixin font-size($sizeValue:16) {
+    font-size: ($sizeValue) + px;
+    font-size: ($sizeValue/10) + rem;
+}

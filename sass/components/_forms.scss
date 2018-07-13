@@ -1,0 +1,31 @@
+// Common controls
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="phone"],
+input[type="color"],
+.input-text {
+    
+    // Unstyle the caret on `<select>`s in IE10+.
+    &::-ms-expand {
+
+    }
+}
+
+textarea {
+    height: auto;
+    min-height: 140px;
+    resize: vertical;
+}

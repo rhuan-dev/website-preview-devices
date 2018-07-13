@@ -1,0 +1,163 @@
+// Toggling content
+.text-hide {
+    @include text-hide();
+}
+
+// Floats
+.clearfix {
+    @include clearfix();
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+// Responsive Images
+img {
+    @include img-responsive();
+
+    vertical-align: top;
+}
+
+// Embeds responsive
+.embed-responsive {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    height: 0;
+    padding: 0;
+
+    .embed-responsive-item, iframe, embed, object, video {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        border: 0;
+    }
+}
+
+// Modifier class for 16:9 aspect ratio
+.embed-responsive-16by9 {
+    padding-bottom: 56.25%;
+}
+
+// Modifier class for 4:3 aspect ratio
+.embed-responsive-4by3 {
+    padding-bottom: 75%;
+}
+
+
+// WordPress Content Alignments
+.alignnone {
+    margin: 0 20px 20px 0;
+}
+
+.aligncenter, div.aligncenter {
+    display: block;
+
+    margin: 0 auto 20px auto;
+
+    text-align: center;
+}
+
+.alignright {
+    float: right;
+
+    margin: 0 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+
+    margin: 0 20px 20px 0;
+}
+
+img.alignnone {
+    margin-bottom: 0;
+}
+
+a img.alignright {
+    float: right;
+
+    margin: 0 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 0 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+
+    margin: 0 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption {
+    position: relative;
+
+    max-width: 100%;
+
+    img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+
+        border: 0 none;
+    }
+}
+
+.wp-caption p.wp-caption-text {
+    @include font-size(12);
+    @include line-height(12, 12);
+    @include letter-spacing(20em);
+
+    font-style: italic;
+
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+
+    margin-bottom: 0;
+    padding: 5px 10px;
+
+    background: rgba(255, 255, 255, .9);
+
+    @media (min-width: $screen-768-min) {
+        bottom: 20px;
+        left: 20px;
+
+        height: 31px;
+        padding: 10px 15px;
+    }
+}
