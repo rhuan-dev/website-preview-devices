@@ -42,13 +42,15 @@ gulp.task('sass', function () {
     return merge(pluginsStream, sassStream)
         .pipe(concat('style.css'))
         .pipe(cleanCss({level: {1: {specialComments: 0}}}))
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest('./assets/css/'));
 });
 
 /**
  * Compile JS Files
  */
 const jsFiles = [
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/gsap/src/minified/TweenMax.min.js',
     'assets/js/functions.js'
 ];
 gulp.task('js', function () {
@@ -74,7 +76,7 @@ const browserSyncFiles = [
 ];
 gulp.task('server', ['js', 'sass'], function () {
     browserSync.init({
-        proxy: 'http://wp.io/apresentacao',
+        proxy: 'http://localhost/apresentacao',
         open: false,
         notify: false,
         injectChanges: true

@@ -1,0 +1,44 @@
+@import "variables";
+
+@font-face {
+  font-family: 'icons';
+  src:  url('#{$icomoon-font-path}/icons.eot?asfkce');
+  src:  url('#{$icomoon-font-path}/icons.eot?asfkce#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/icons.ttf?asfkce') format('truetype'),
+    url('#{$icomoon-font-path}/icons.woff?asfkce') format('woff'),
+    url('#{$icomoon-font-path}/icons.svg?asfkce#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-desktop {
+  &:before {
+    content: $icon-desktop; 
+  }
+}
+.icon-tablet {
+  &:before {
+    content: $icon-tablet; 
+  }
+}
+.icon-mobile {
+  &:before {
+    content: $icon-mobile; 
+  }
+}
+
