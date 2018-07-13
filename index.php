@@ -12,6 +12,7 @@
 <div class="bar-devices">
     <button type="button" data-desktop><i class="icon-desktop"></i></button>
     <button type="button" data-tablet><i class="icon-tablet"></i></button>
+    <button type="button" class="tablet-horizontal" data-tablet-horizontal><i class="icon-tablet"></i></button>
     <button type="button" data-mobile><i class="icon-mobile"></i></button>
 </div>
 <!-- /.bar-devices -->
@@ -29,6 +30,18 @@
 <!-- /.iphone-mockup -->
 
 <div class="ipad-mockup">
+    <div class="inside">
+        <div class="bg-image">
+            <div class="image"></div>
+        </div>
+        <!-- /.bg-image -->
+    </div>
+    <!-- /.inside -->
+</div>
+<!-- /.iphone-mockup -->
+
+
+<div class="ipad-mockup-horizontal">
     <div class="inside">
         <div class="bg-image">
             <div class="image"></div>

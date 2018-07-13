@@ -7,31 +7,11 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: $white url("../../assets/images/previews/desktop.png") no-repeat center top;
+    background: $white url("../../assets/images/previews/desktop.jpg") no-repeat center top;
 
     &.hide {
         background: linear-gradient(#1a2038, #131218);
     }
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }
 
 /**
@@ -46,6 +26,7 @@ Bar devices
     align-items: center;
     justify-content: center;
     display: flex;
+    z-index: 100;
 
     button {
         cursor: pointer;
@@ -56,6 +37,8 @@ Bar devices
         @include transition(all .4s ease);
         color: $white;
         border: 1px solid #00b3ee;
+        height: 35px;
+        width: 35px;
 
         &:hover {
             background-color: #333;
@@ -63,6 +46,10 @@ Bar devices
             border-color: #333;
         }
     }
+}
+
+.tablet-horizontal {
+    @include rotate(90deg);
 }
 
 /**
@@ -75,7 +62,6 @@ Iphone
     display: none;
     position: relative;
     justify-content: center;
-    align-self: flex-start;
     margin-top: 30px;
     opacity: 0;
     visibility: hidden;
@@ -85,7 +71,6 @@ Iphone
         height: 635px;
         width: 380px;
         margin-top: 130px;
-        margin-right: 12px;
         position: relative;
         overflow: hidden;
     }
@@ -97,7 +82,7 @@ Iphone
         width: calc(100% + 17px);
 
         .image {
-            background: url("../../assets/images/previews/mobile.png") no-repeat center top;
+            background: url("../../assets/images/previews/mobile.jpg") no-repeat center top;
             width: 100%;
             display: block;
             position: relative;
@@ -111,13 +96,13 @@ IPad
  */
 .ipad-mockup {
     background: url("../../assets/images/ipad.png") no-repeat center top;
-    width: 980px;
-    height: 1330px;
+    width: 875px;
+    height: 1235px;
     display: none;
     justify-content: center;
     position: relative;
     margin-top: 30px;
-    align-self: flex-start;
+    margin-bottom: 30px;
     opacity: 0;
     visibility: hidden;
 
@@ -139,7 +124,47 @@ IPad
         width: calc(100% + 17px);
 
         .image {
-            background: url("../../assets/images/previews/tablet.png") no-repeat center top;
+            background: url("../../assets/images/previews/tablet.jpg") no-repeat center top;
+            width: 100%;
+            display: block;
+            position: relative;
+            z-index: 10;
+        }
+    }
+}
+
+// horizontal
+.ipad-mockup-horizontal {
+    background: url("../../assets/images/ipad-horizontal.png") no-repeat center top;
+    width: 1235px;
+    height: 875px;
+    display: none;
+    justify-content: center;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    opacity: 0;
+    visibility: hidden;
+
+    .inside {
+        @include border-radius(3px);
+        height: 740px;
+        width: 1024px;
+        margin-top: 81px;
+        margin-right: 0px;
+        position: relative;
+        overflow: hidden;
+        background: $white;
+    }
+
+    .bg-image {
+        overflow-y: scroll;
+        height: 100%;
+        position: relative;
+        width: calc(100% + 17px);
+
+        .image {
+            background: url("../../assets/images/previews/tablet-horizontal.jpg") no-repeat center top;
             width: 100%;
             display: block;
             position: relative;

@@ -45,8 +45,12 @@ this._startTime=c-(c-this._startTime)*this._timeScale/a),this._timeScale=a,c=thi
         $('.ipad-mockup .image').css('height', $(this).height());
     });
 
+    $(".ipad-mockup-horizontal .image").getBgImage(function () {
+        $('.ipad-mockup-horizontal .image').css('height', $(this).height());
+    });
+
     $('[data-mobile]').click(function () {
-        TweenMax.to('.ipad-mockup', .6, {
+        TweenMax.to(['.ipad-mockup', '.ipad-mockup-horizontal'], .6, {
             autoAlpha: 0, x: -50, display: 'none', onComplete: function () {
                 TweenMax.set('body', {className: '+=hide', height: 'auto'});
                 TweenMax.to('.iphone-mockup', .6, {autoAlpha: 1, x: 0, display: 'flex'});
@@ -55,7 +59,7 @@ this._startTime=c-(c-this._startTime)*this._timeScale/a),this._timeScale=a,c=thi
     });
 
     $('[data-tablet]').click(function () {
-        TweenMax.to('.iphone-mockup', .6, {
+        TweenMax.to(['.iphone-mockup', '.ipad-mockup-horizontal'], .6, {
             autoAlpha: 0, x: -50, display: 'none', onComplete: function () {
                 TweenMax.set('body', {className: '+=hide', height: 'auto'});
                 TweenMax.to('.ipad-mockup', .6, {autoAlpha: 1, x: 0, display: 'flex'});
@@ -63,8 +67,17 @@ this._startTime=c-(c-this._startTime)*this._timeScale/a),this._timeScale=a,c=thi
         });
     });
 
-    $('[data-desktop]').click(function () {
+    $('[data-tablet-horizontal]').click(function () {
         TweenMax.to(['.iphone-mockup', '.ipad-mockup'], .6, {
+            autoAlpha: 0, x: -50, display: 'none', onComplete: function () {
+                TweenMax.set('body', {className: '+=hide', height: 'auto'});
+                TweenMax.to('.ipad-mockup-horizontal', .6, {autoAlpha: 1, x: 0, display: 'flex'});
+            }
+        });
+    });
+
+    $('[data-desktop]').click(function () {
+        TweenMax.to(['.iphone-mockup', '.ipad-mockup', '.ipad-mockup-horizontal'], .6, {
             autoAlpha: 0, x: -50, display: 'none', onComplete: function () {
                 TweenMax.set('body', {className: '-=hide'});
                 $("body").getBgImage(function () {
