@@ -3,3 +3,6 @@ node_modules
 
 #phpstorm
 .idea
+
+# package
+package-lock.json
