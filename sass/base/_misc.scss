@@ -1,3 +1,7 @@
+html {
+    background: $background;
+}
+
 /**
 Body
  */
@@ -6,11 +10,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: $background center top;
     min-height: 100vh;
-    background: $white url("../../assets/images/previews/desktop.jpg") no-repeat center top;
 
     &.hide {
-        background: linear-gradient(#1a2038, #131218);
+        background: radial-gradient(circle, lighten($background, 15%), $background 70%) !important;
     }
 }
 
@@ -29,146 +33,112 @@ Bar devices
     z-index: 100;
 
     button {
-        cursor: pointer;
-        margin: 0 2.5px;
-        background: #00b3ee;
-        padding: 5px;
         @include border-radius(2px);
         @include transition(all .4s ease);
-        color: $white;
-        border: 1px solid #00b3ee;
+        cursor: pointer;
+        margin: 0 2.5px;
+        background: $white;
+        padding: 5px;
+        color: $buttonColor;
+        border: 1px solid $white;
         height: 35px;
         width: 35px;
 
-        &:hover {
-            background-color: #333;
+        &:hover, &.active {
+            background-color: $buttonColor;
             color: $white;
-            border-color: #333;
+            border-color: $buttonColor;
         }
+    }
+
+    [data-tablet-horizontal] {
+        @include rotate(90deg);
     }
 }
 
-.tablet-horizontal {
-    @include rotate(90deg);
+/**
+Window screen
+ */
+.window-screen {
+    @include border-radius(0 0 5px 5px);
+    overflow: hidden;
 }
 
 /**
-Iphone
+Inside Window
  */
-.iphone-mockup {
-    background: url("../../assets/images/iphone6.png") no-repeat center top;
-    width: 542px;
-    height: 952px;
-    display: none;
+.inside-screen {
+    width: calc(100% + 17px);
     position: relative;
-    justify-content: center;
-    margin-top: 30px;
-    opacity: 0;
-    visibility: hidden;
-
-    .inside {
-        @include border-radius(3px);
-        height: 635px;
-        width: 380px;
-        margin-top: 130px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .bg-image {
-        overflow-y: scroll;
-        height: 635px;
-        position: relative;
-        width: calc(100% + 17px);
-
-        .image {
-            background: url("../../assets/images/previews/mobile.jpg") no-repeat center top;
-            width: 100%;
-            display: block;
-            position: relative;
-            z-index: 10;
-        }
-    }
+    overflow-y: scroll;
+    height: 100%;
 }
 
 /**
-IPad
+Content screen
  */
-.ipad-mockup {
+.content-screen {
+    background: no-repeat center top;
+}
+
+[data-image] {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/**
+Tablet
+ */
+.tablet {
     background: url("../../assets/images/ipad.png") no-repeat center top;
-    width: 875px;
-    height: 1235px;
-    display: none;
+    height: 1260px;
+    width: 977px;
     justify-content: center;
     position: relative;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    opacity: 0;
-    visibility: hidden;
+    margin: 30px 0 0;
+    display: none;
 
-    .inside {
-        @include border-radius(3px);
-        height: 990px;
+    .window-screen {
+        margin-top: 128px;
         width: 768px;
-        margin-top: 140px;
-        margin-right: 0px;
-        position: relative;
-        overflow: hidden;
-        background: $white;
-    }
-
-    .bg-image {
-        overflow-y: scroll;
-        height: 100%;
-        position: relative;
-        width: calc(100% + 17px);
-
-        .image {
-            background: url("../../assets/images/previews/tablet.jpg") no-repeat center top;
-            width: 100%;
-            display: block;
-            position: relative;
-            z-index: 10;
-        }
+        height: 986px;
     }
 }
 
-// horizontal
-.ipad-mockup-horizontal {
+/**
+Tablet horizontal
+ */
+.tablet-horizontal {
     background: url("../../assets/images/ipad-horizontal.png") no-repeat center top;
-    width: 1235px;
-    height: 875px;
-    display: none;
+    height: 906px;
+    width: 1302px;
     justify-content: center;
     position: relative;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    opacity: 0;
-    visibility: hidden;
+    margin: 30px 0 0;
+    display: none;
 
-    .inside {
-        @include border-radius(3px);
-        height: 740px;
+    .window-screen {
+        margin-top: 86px;
         width: 1024px;
-        margin-top: 81px;
-        margin-right: 0px;
-        position: relative;
-        overflow: hidden;
-        background: $white;
+        height: 735px;
     }
+}
 
-    .bg-image {
-        overflow-y: scroll;
-        height: 100%;
-        position: relative;
-        width: calc(100% + 17px);
+/**
+Mobile
+ */
+.mobile {
+    background: url("../../assets/images/iphone6.png") no-repeat center top;
+    height: 895px;
+    width: 542px;
+    justify-content: center;
+    position: relative;
+    margin: 30px 0 0;
+    display: none;
 
-        .image {
-            background: url("../../assets/images/previews/tablet-horizontal.jpg") no-repeat center top;
-            width: 100%;
-            display: block;
-            position: relative;
-            z-index: 10;
-        }
+    .window-screen {
+        margin-top: 130px;
+        width: 380px;
+        height: 635px;
     }
 }

@@ -10,47 +10,44 @@
 <body>
 
 <div class="bar-devices">
-    <button type="button" data-desktop><i class="icon-desktop"></i></button>
-    <button type="button" data-tablet><i class="icon-tablet"></i></button>
-    <button type="button" class="tablet-horizontal" data-tablet-horizontal><i class="icon-tablet"></i></button>
-    <button type="button" data-mobile><i class="icon-mobile"></i></button>
+    <button type="button" data-device data-desktop><i class="icon-desktop"></i></button>
+    <button type="button" data-device data-tablet><i class="icon-tablet"></i></button>
+    <button type="button" data-device data-tablet-horizontal><i class="icon-tablet"></i></button>
+    <button type="button" data-device data-mobile><i class="icon-mobile"></i></button>
 </div>
 <!-- /.bar-devices -->
 
-
-<div class="iphone-mockup">
-    <div class="inside">
-        <div class="bg-image">
-            <div class="image"></div>
+<div data-image="assets/images/previews/desktop.jpg" class="desktop">
+    <div class="window-screen">
+        <div class="inside-screen">
+            <div class="content-screen"></div>
         </div>
-        <!-- /.bg-image -->
     </div>
-    <!-- /.inside -->
 </div>
-<!-- /.iphone-mockup -->
 
-<div class="ipad-mockup">
-    <div class="inside">
-        <div class="bg-image">
-            <div class="image"></div>
+<div data-image="assets/images/previews/tablet.jpg" class="tablet">
+    <div class="window-screen">
+        <div class="inside-screen">
+            <div class="content-screen"></div>
         </div>
-        <!-- /.bg-image -->
     </div>
-    <!-- /.inside -->
 </div>
-<!-- /.iphone-mockup -->
 
-
-<div class="ipad-mockup-horizontal">
-    <div class="inside">
-        <div class="bg-image">
-            <div class="image"></div>
+<div data-image="assets/images/previews/tablet-horizontal.jpg" class="tablet-horizontal">
+    <div class="window-screen">
+        <div class="inside-screen">
+            <div class="content-screen"></div>
         </div>
-        <!-- /.bg-image -->
     </div>
-    <!-- /.inside -->
 </div>
-<!-- /.iphone-mockup -->
+
+<div data-image="assets/images/previews/mobile.jpg" class="mobile">
+    <div class="window-screen">
+        <div class="inside-screen">
+            <div class="content-screen"></div>
+        </div>
+    </div>
+</div>
 
 <script src="assets/js/dist/bundle.min.js"></script>
 
