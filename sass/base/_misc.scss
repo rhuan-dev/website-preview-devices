@@ -6,12 +6,17 @@ html {
 Body
  */
 body {
+    @include transition(background .4s ease);
     overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $background center top;
     min-height: 100vh;
+    background: $background url("../../assets/images/loader.svg") no-repeat center center;
+
+    &.loaded {
+        background: $background center top;
+    }
 
     &.hide {
         background: radial-gradient(circle, lighten($background, 15%), $background 70%) !important;
@@ -62,6 +67,7 @@ Window screen
 .window-screen {
     @include border-radius(0 0 5px 5px);
     overflow: hidden;
+    background: url("../../assets/images/loader.svg") no-repeat center center;
 }
 
 /**

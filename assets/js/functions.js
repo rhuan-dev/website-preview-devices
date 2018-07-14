@@ -53,9 +53,11 @@
             TweenMax.set('[data-device]', {className: '-=active'});
             TweenMax.set($(this), {className: '+=active'});
             TweenMax.to(['.tablet', '.tablet-horizontal', '.mobile'], .4, {autoAlpha: 0, x: -100, display: 'none', onComplete: function () {
-                TweenMax.set('body', {height: 'auto', className: '-=hide'});
                 $('.desktop').makeMockup({
-                    selectorContent: $('body')
+                    selectorContent: $('body'),
+                    complete: function() {
+                        TweenMax.set('body', {height: 'auto', className: '-=hide'});
+                    }
                 });
             }});
         }
