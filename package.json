@@ -33,6 +33,6 @@
   "homepage": "https://github.com/rhcarlosweb/base-theme#readme",
   "dependencies": {
     "gsap": "^2.1.2",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.0"
   }
 }
