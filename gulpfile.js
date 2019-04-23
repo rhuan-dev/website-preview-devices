@@ -36,9 +36,7 @@ function browserSyncReload(done) {
 /**
  Compile CSS
  */
-const sassNodePlugins = [
-    'node_modules/owl.carousel/dist/assets/owl.carousel.min.css'
-];
+const sassNodePlugins = [];
 
 const sassFiles = [
     'sass/**/*.scss'
