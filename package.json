@@ -33,9 +33,6 @@
   "homepage": "https://github.com/rhcarlosweb/base-theme#readme",
   "dependencies": {
     "gsap": "^2.1.2",
-    "hamburgers": "^1.1.3",
-    "hoek": "^6.1.3",
     "jquery": "^3.4.0",
-    "owl.carousel": "^2.3.4"
   }
 }
