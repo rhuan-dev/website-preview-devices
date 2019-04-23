@@ -1,10 +1,15 @@
-// gulp of course
-const gulp = require('gulp');
+// gulp
+const {src, dest, parallel, series, watch} = require('gulp');
 
 // css plugins
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const cleanCss = require('gulp-clean-css');
+const sassGlob = require('gulp-sass-glob');
+const cleanCSS = require('gulp-clean-css');
+
+// images
+const imagemin = require("gulp-imagemin");
+
 
 // js plugins
 const uglify = require('gulp-uglify');
@@ -15,76 +20,152 @@ const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const merge = require('merge-stream');
-
-// browsersync
 const browserSync = require('browser-sync').create();
 
+// general variables
+const proxy = 'http://localhost/apresentacao';
+
 /**
- * Compile Sass Files
- * @type {string[]}
+ * Browser Sync reload
  */
-const pluginsFiles = [];
+function browserSyncReload(done) {
+    browserSync.reload();
+    done();
+}
+
+/**
+ Compile CSS
+ */
+const sassNodePlugins = [
+    'node_modules/owl.carousel/dist/assets/owl.carousel.min.css'
+];
+
 const sassFiles = [
     'sass/**/*.scss'
 ];
-gulp.task('sass', function () {
-    const pluginsStream = gulp.src(pluginsFiles);
 
-    const sassStream = gulp.src(sassFiles)
+function css() {
+    // nodep lugins
+    // const pluginsStream = src(sassNodePlugins);
+
+    //sass files to merge
+    const sassStream = src(sassFiles)
         .pipe(plumber())
-        .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sassGlob())
+        .pipe(sass.sync({outputStyle: 'nested'}).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
         .pipe(browserSync.stream());
 
-    return merge(pluginsStream, sassStream)
+    return merge(sassStream)
         .pipe(concat('style.css'))
-        .pipe(cleanCss({level: {1: {specialComments: 0}}}))
-        .pipe(gulp.dest('./assets/css/'));
-});
+        .pipe(cleanCSS({
+            level: {
+                1: {
+                    specialComments: 1
+                }
+            }
+        }))
+        .pipe(dest('assets/css'));
+}
 
 /**
- * Compile JS Files
+ * Compile JS
  */
 const jsFiles = [
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/gsap/src/minified/TweenMax.min.js',
     'assets/js/functions.js'
 ];
-gulp.task('js', function () {
-    return gulp.src(jsFiles)
+
+function js() {
+    return src(jsFiles)
         .pipe(concat('bundle.js'))
-        .pipe(gulp.dest('assets/js/dist/'))
+        .pipe(dest('assets/js/dist'))
         .pipe(rename('bundle.min.js'))
         .pipe(babel({
-            presets: ['env']
+            presets: ['@babel/preset-env']
         }))
         .pipe(uglify())
-        .pipe(gulp.dest('assets/js/dist/'));
-});
+        .pipe(dest('assets/js/dist'))
+        .pipe(browserSync.stream());
+}
 
 /**
- * Browser Sync Server
- * @type {string[]}
+ * Image optimize
  */
-const browserSyncFiles = [
-    'assets/images/**',
-    'assets/js/dist/**',
-    '*.php'
+const imagesFiles = [
+    "assets/images/**/*"
 ];
-gulp.task('server', ['js', 'sass'], function () {
+
+function images() {
+    return src(imagesFiles)
+        .pipe(
+            imagemin([
+                imagemin.gifsicle({interlaced: true}),
+                imagemin.jpegtran({progressive: true}),
+                imagemin.optipng({optimizationLevel: 5}),
+                imagemin.svgo({
+                    plugins: [
+                        {
+                            removeViewBox: false,
+                            collapseGroups: true
+                        }
+                    ]
+                })
+            ])
+        )
+        .pipe(dest("assets/images/dist"));
+}
+
+/**
+ * Browser sync
+ */
+function browserSyncServer(done) {
     browserSync.init({
-        proxy: 'http://localhost/apresentacao',
+        proxy: proxy,
         open: false,
         notify: false,
         injectChanges: true
     });
 
-    gulp.watch(sassFiles, ['sass']);
+    done();
+}
 
-    gulp.watch(jsFiles, ['js']);
+/**
+ * Watch files
+ */
+const filesToWatch = [
+    'assets/images/**',
+    'assets/js/dist/**',
+    '*.php'
+];
 
-    gulp.watch(browserSyncFiles).on('change', browserSync.reload);
-});
+
+function watchFiles() {
+    watch(sassFiles, {usePolling: true}, css);
+
+    watch(jsFiles, {usePolling: true}, js);
+
+    watch(filesToWatch, series(browserSyncReload));
+}
+
+/**
+ * Complex task
+ * @type {function(): *}
+ */
+const server = parallel(browserSyncServer, series(js, css, watchFiles));
+const build = series(js, css, images);
+
+/**
+ * Exports tasks
+ * @type {function(): *}
+ */
+exports.css = css;
+exports.js = js;
+exports.images = images;
+exports.build = build;
+exports.server = server;
+exports.default = server;

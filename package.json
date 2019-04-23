@@ -4,19 +4,20 @@
   "description": "",
   "main": "gulpfile.js",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.24.5",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-babel": "^7.0.1",
-    "gulp-clean-css": "^3.9.4",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "browser-sync": "^2.26.4",
+    "gulp": "^4.0.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-plumber": "^1.2.0",
-    "gulp-rename": "^1.3.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-uglify": "^3.0.2",
     "merge-stream": "^1.0.1"
   },
   "repository": {
@@ -31,10 +32,10 @@
   },
   "homepage": "https://github.com/rhcarlosweb/base-theme#readme",
   "dependencies": {
-    "gsap": "^2.0.1",
-    "hamburgers": "^0.9.3",
-    "hoek": "^5.0.3",
-    "jquery": "^3.3.1",
+    "gsap": "^2.1.2",
+    "hamburgers": "^1.1.3",
+    "hoek": "^6.1.3",
+    "jquery": "^3.4.0",
     "owl.carousel": "^2.3.4"
   }
 }

@@ -1,7 +1,6 @@
 (function ($) {
     /*
-    plugin to mockup
-    structure
+     * Structure to mockup
     <div data-image="assets/images/previews/desktop.jpg" class="desktop">
         <div class="window-screen">
             <div class="inside-screen">
@@ -18,6 +17,7 @@
             image: $urlImage,
             selectorContent: $this.find('.content-screen'),
             complete: null,
+            tablet: false
         }, options);
 
         return this.each(function () {
@@ -26,6 +26,10 @@
             tmpImg.src = $urlImage;
             $(tmpImg).one('load', function () {
                 let heightImage = tmpImg.height;
+
+                if(settings.tablet == true) {
+                    heightImage = heightImage * 0.7;
+                }
 
                 settings.selectorContent.css({
                     'height': heightImage,
@@ -44,7 +48,9 @@
         selectorContent: $('body')
     });
     $('.tablet-horizontal').makeMockup();
-    $('.tablet').makeMockup();
+    $('.tablet').makeMockup({
+        tablet: true
+    });
     $('.mobile').makeMockup();
 
     // buttons
