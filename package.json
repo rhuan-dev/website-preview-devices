@@ -18,7 +18,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.0.9",
     "gulp-uglify": "^3.0.2",
-    "merge-stream": "^1.0.1"
+    "merge-stream": "^2.0.0"
   },
   "repository": {
     "type": "git",
